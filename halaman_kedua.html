@@ -56,7 +56,29 @@
         <div class="text-animation">
             <p id="text"></p> <!-- Tempat teks animasi -->
         </div> <br> </br>
+       
         <button onclick="window.history.back();">Kembali</button> <!-- Tombol kembali -->
+    
+
+    <p>Mau kejutan lain? <span id="trigger-login">Klik di sini</span></p>
+
+        <!-- Modal login tersembunyi -->
+        <div id="login-modal" class="modal hidden">
+            <div class="modal-content">
+                <span class="close-btn">&times;</span>
+                <h2>Kapan ulang tahunku? (DDMMYY)</h2>
+                <input type="password" id="password" placeholder="Password">
+                <button id="login-btn">Login</button>
+                <p id="error-msg" class="hidden">Password salah!</p>
+            </div>
+        </div>
     </div>
+
+    
+  
+
+    
+    <div id="particle-container"></div>
+    <script src="script.js" defer></script>
 </body>
 </html>
