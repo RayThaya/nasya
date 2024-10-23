@@ -1,15 +1,36 @@
-document.getElementById('startButton').addEventListener('click', function() {
-    const nickname = document.getElementById('nickname').value; // Mengambil nilai input
-    const message = document.getElementById('message'); // Mengambil elemen untuk pesan
+// Fungsi untuk membuat kelopak bunga
+function createPetal() {
+    const petal = document.createElement('div');
+    petal.classList.add('petal');
+    petal.style.left = `${Math.random() * 100}vw`;
+    petal.style.animationDuration = `${Math.random() * 5 + 3}s`; // Kecepatan jatuh bervariasi
+    petal.style.opacity = Math.random(); // Transparansi acak
+    document.getElementById('particle-container').appendChild(petal);
 
-    if (nickname === 'Nasya', 'Shakila') {
-        // Jika input benar, alihkan ke halaman lain
-        window.location.href = 'halaman_kedua.html'; // Ganti dengan nama file halaman kedua
+    // Hapus kelopak setelah animasi selesai
+    setTimeout(() => {
+        petal.remove();
+    }, 8000); // Waktu penghapusan sesuai dengan durasi animasi
+}
+
+// Buat kelopak setiap 300ms
+setInterval(createPetal, 300);
+
+document.getElementById('trigger-login').addEventListener('click', function() {
+    document.getElementById('login-modal').classList.remove('hidden');
+});
+
+document.querySelector('.close-btn').addEventListener('click', function() {
+    document.getElementById('login-modal').classList.add('hidden');
+});
+
+document.getElementById('login-btn').addEventListener('click', function() {
+    const password = document.getElementById('password').value;
+    const errorMsg = document.getElementById('error-msg');
+
+    if (password === '060507') {
+        window.location.href = 'surprise.html'; // Redirect ke halaman surprise
     } else {
-        
-        // Jika input salah, tampilkan pesan kesalahan
-        message.textContent = "Maaf, coba lagi";
-        message.classList.remove('hidden');
-        message.classList.add('error');
+        errorMsg.classList.remove('hidden');
     }
 });
