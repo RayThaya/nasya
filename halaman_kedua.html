@@ -3,47 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Selamat Datang, Nasya!</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Pastikan ini mengarah ke file CSS yang benar -->
+    <title>Selamat Datang!</title>
+    <link rel="stylesheet" href="styles.css">
     <script>
         window.onload = function() {
-            let texts = [
-                "Halo cantik!", 
-                "Jangan lupa makan ya!", 
-                "I love you"
-            ];
-            let index = 0;
+            // Ambil nickname dari localStorage
+            const nickname = localStorage.getItem('nickname');
             let textElement = document.getElementById("text");
+            let greeting = document.getElementById("greeting");
+            let imageElement = document.getElementById("image");
 
-            function showText() {
-                if (index < texts.length) {
-                    textElement.innerText = texts[index];
-                    textElement.classList.remove("fade-out");
-                    textElement.classList.add("fade-in");
-                    
-                    setTimeout(() => {
-                        textElement.classList.remove("fade-in");
-                        textElement.classList.add("fade-out");
-                        index++;
-                        setTimeout(showText, 1000); // Tunggu 1 detik sebelum menunjukkan teks berikutnya
-                    }, 5000); // Tampilkan setiap teks selama 5 detik
-                }
+            // Tentukan konten berdasarkan nickname
+            if (nickname === 'Nasya') {
+                greeting.innerText = 'Selamat Datang, Nasya!';
+                imageElement.src = 'https://i.imgur.com/Ilx6TR1.jpeg'; // Gambar untuk Nasya
+                showText(["Halo cantik!", "Jangan lupa makan ya!", "I love you"]);
+            } else if (nickname === 'Shakila') {
+                greeting.innerText = 'Selamat Datang, Shakila!';
+                imageElement.src = 'https://i.imgur.com/your_shakila_image.jpeg'; // Ganti dengan gambar Shakila
+                showText(["Haii", "Jangan lupa senyum terus yaa"]);
             }
 
-            showText();
+            // Fungsi untuk menampilkan teks secara bergantian
+            function showText(texts) {
+                let index = 0;
+                function displayText() {
+                    if (index < texts.length) {
+                        textElement.innerText = texts[index];
+                        textElement.classList.remove("fade-out");
+                        textElement.classList.add("fade-in");
+
+                        setTimeout(() => {
+                            textElement.classList.remove("fade-in");
+                            textElement.classList.add("fade-out");
+                            index++;
+                            setTimeout(displayText, 1000);
+                        }, 5000);
+                    }
+                }
+                displayText();
+            }
         };
     </script>
 </head>
 <body>
     <div class="container">
-        <h1>Selamat Datang, Nasya!</h1>
+        <h1 id="greeting"></h1> <!-- Judul yang berubah -->
         <!-- Gambar bunga -->
         <div class="flower-image">
-            <img src="https://i.imgur.com/Ilx6TR1.jpeg" alt="Bunga Mawar" />
+            <img id="image" src="" alt="Gambar Bunga" />
         </div>
         <div class="text-animation">
             <p id="text"></p> <!-- Tempat teks animasi -->
-        </div>
+        </div> <br> </br>
         <button onclick="window.history.back();">Kembali</button> <!-- Tombol kembali -->
     </div>
 </body>
