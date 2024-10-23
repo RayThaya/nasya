@@ -3,18 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hai Cantik!</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link ke file CSS -->
+    <title>Selamat Datang</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Pastikan ini mengarah ke file CSS yang benar -->
 </head>
 <body>
     <div class="container">
         <h1>Hai Cantik!</h1>
-        <p>Masukkan nama panggilanmu di bawah ini:</p>
-        <input type="text" id="nickname" placeholder="Nama panggilanmu">
+        <p>Masukkan nama panggilanmu:</p>
+        <input type="text" id="nickname" placeholder="Nama panggilanmu"> <br> </br>
         <button id="startButton">Mulai</button>
-        <p id="message" class="hidden"></p> <!-- Tempat untuk menampilkan pesan -->
+        <p id="message" class="hidden"></p> <!-- Pesan kesalahan -->
     </div>
-    
-    <script src="script.js"></script> <!-- Link ke file JavaScript -->
+
+    <script>
+        document.getElementById('startButton').addEventListener('click', function() {
+            const nickname = document.getElementById('nickname').value; // Ambil nilai input
+            const message = document.getElementById('message'); // Ambil elemen pesan
+
+            if (nickname === 'Nasya' || nickname === 'Shakila') {
+                // Simpan nickname di localStorage
+                localStorage.setItem('nickname', nickname);
+                // Alihkan ke halaman kedua
+                window.location.href = 'halaman_kedua.html';
+            } else {
+                // Jika input salah, tampilkan pesan kesalahan
+                message.textContent = "Maaf, coba lagi";
+                message.classList.remove('hidden');
+                message.classList.add('error');
+            }
+        });
+    </script>
 </body>
 </html>
