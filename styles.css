@@ -163,6 +163,7 @@ p {
     border-radius: 10px;
     width: 300px;
     text-align: center;
+    position: relative;
 }
 
 .hidden {
