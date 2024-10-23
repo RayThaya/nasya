@@ -5,41 +5,86 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0e5de;
+    font-family: 'Cursive', sans-serif;
+    background-color: #fce4ec; /* Latar belakang warna pastel pink */
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    background-image: url( https://i.imgur.com/UniKIV3.jpg); /* Background soft image */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 .container {
     text-align: center;
-    background-color: #ffffff;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    width: 300px;
+    background-color: rgba(255, 255, 255, 0.85); /* Transparansi untuk efek lembut */
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); /* Efek bayangan yang lebih lembut */
+    width: 350px;
+    backdrop-filter: blur(5px); /* Efek blur di belakang container */
+    transition: transform 0.3s ease-in-out;
+}
+
+.container:hover {
+    transform: scale(1.05); /* Animasi memperbesar saat hover */
 }
 
 h1 {
-    color: #ff6b81;
-    margin-bottom: 20px;
+    color: #ff4081; /* Warna pink terang untuk teks */
+    margin-bottom: 25px;
+    font-size: 28px;
+    letter-spacing: 2px;
 }
 
 button {
-    padding: 10px;
-    background-color: #ff6b81;
+    padding: 12px 20px;
+    background-color: #ff4081; /* Warna pink yang lebih menonjol */
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 50px; /* Sudut lebih bulat */
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.4s, transform 0.2s ease;
+    font-size: 12px;
+    box-shadow: 0 5px 15px rgba(255, 64, 129, 0.4); /* Bayangan pink */
 }
 
 button:hover {
-    background-color: #ff4a6b;
+    background-color: #e91e63; /* Warna lebih cerah saat hover */
+    transform: translateY(-5px); /* Efek mengangkat tombol */
 }
+
+input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ffc1e3; /* Warna bingkai lembut */
+    border-radius: 25px; /* Sudut bulat */
+    margin-bottom: 15px;
+    background-color: #fff0f6;
+    transition: border-color 0.3s;
+}
+
+input:focus {
+    border-color: #ff4081; /* Warna pink cerah saat input fokus */
+    outline: none;
+}
+
+p {
+    color: #ff4081;
+    font-size: 20px;
+    margin-top: 15px;
+}
+
+.hidden {
+    display: none;
+}
+
+.error {
+    color: red;
+}
+
 
 /* Bunga Mawar */
 .flower-image img {
