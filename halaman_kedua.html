@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Datang, Nasya!</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Pastikan ini mengarah ke file CSS yang benar -->
+    <script>
+        window.onload = function() {
+            let texts = [
+                "Halo cantik!", 
+                "Jangan lupa makan ya!", 
+                "I love you"
+            ];
+            let index = 0;
+            let textElement = document.getElementById("text");
+
+            function showText() {
+                if (index < texts.length) {
+                    textElement.innerText = texts[index];
+                    textElement.classList.remove("fade-out");
+                    textElement.classList.add("fade-in");
+                    
+                    setTimeout(() => {
+                        textElement.classList.remove("fade-in");
+                        textElement.classList.add("fade-out");
+                        index++;
+                        setTimeout(showText, 1000); // Tunggu 1 detik sebelum menunjukkan teks berikutnya
+                    }, 5000); // Tampilkan setiap teks selama 5 detik
+                }
+            }
+
+            showText();
+        };
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Selamat Datang, Nasya!</h1>
+        <!-- Gambar bunga -->
+        <div class="flower-image">
+            <img src="Bunga.jpg" alt="Bunga Mawar" />
+        </div>
+        <div class="text-animation">
+            <p id="text"></p> <!-- Tempat teks animasi -->
+        </div>
+        <button onclick="window.history.back();">Kembali</button> <!-- Tombol kembali -->
+    </div>
+</body>
+</html>

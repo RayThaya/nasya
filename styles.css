@@ -1,0 +1,69 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0e5de;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    text-align: center;
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+
+h1 {
+    color: #ff6b81;
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 10px;
+    background-color: #ff6b81;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #ff4a6b;
+}
+
+/* Bunga Mawar */
+.flower-image img {
+    width: 100%; /* Gambar menyesuaikan lebar kontainer */
+    max-width: 150px; /* Batas maksimal lebar gambar */
+    height: auto; /* Agar proporsi gambar tetap terjaga */
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+/* Animasi teks */
+.text-animation {
+    margin-top: 20px;
+}
+
+.fade-in, .fade-out {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.fade-in {
+    opacity: 1;
+}
+
+.hidden {
+    display: none;
+}

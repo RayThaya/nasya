@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nasya</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0e5de;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            display: none; /* Hidden by default */
+        }
+
+        h1 {
+            color: #ff6b81;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #ff6b81;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #ff4a6b;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .flower-image img {
+            width: 100%;
+            max-width: 150px;
+            height: auto;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .fade-in, .fade-out {
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .fade-in {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Halaman Pertama -->
+    <div id="page1" class="container">
+        <h1>Hai Cantik!</h1>
+        <p>Masukkan nama panggilanmu:</p>
+        <input type="text" id="nickname" placeholder="Nama panggilanmu">
+        <button onclick="checkName()">Mulai</button>
+        <p id="error" class="hidden" style="color: red;">Maaf, coba lagi!</p>
+    </div>
+
+    <!-- Halaman Kedua -->
+    <div id="page2" class="container">
+        <h1>Selamat Datang, Nasya!</h1>
+        <div class="flower-image">
+            <img src="https://drive.google.com/uc?id=1jB4cFcYA4rJ5MCl6wKSalFfSSRlx4wbA">
+        </div>
+        <div class="text-animation">
+            <p id="text"></p> <!-- Tempat teks animasi -->
+        <button onclick="goBack()">Kembali</button>
+    </div>
+
+    <script>
+        // Tampilkan halaman pertama saat load
+        document.getElementById('page1').style.display = 'block';
+
+        // Fungsi untuk memeriksa nama panggilan
+        function checkName() {
+            const nickname = document.getElementById('nickname').value;
+            const error = document.getElementById('error');
+            if (nickname === 'Nasya') {
+                document.getElementById('page1').style.display = 'none';
+                document.getElementById('page2').style.display = 'block';
+            } else {
+                error.classList.remove('hidden');
+            }
+        }
+
+        // Fungsi animasi teks pada halaman kedua
+        window.onload = function() {
+            let texts = [
+                "Halo cantik!", 
+                "Jangan lupa makan ya!", 
+                "I love you"
+            ];
+            let index = 0;
+            let textElement = document.getElementById("text");
+
+            function showText() {
+                if (index < texts.length) {
+                    textElement.innerText = texts[index];
+                    textElement.classList.remove("fade-out");
+                    textElement.classList.add("fade-in");
+                    
+                    setTimeout(() => {
+                        textElement.classList.remove("fade-in");
+                        textElement.classList.add("fade-out");
+                        index++;
+                        setTimeout(showText, 1000); // Tunggu 1 detik sebelum menunjukkan teks berikutnya
+                    }, 5000); // Tampilkan setiap teks selama 5 detik
+                }
+            }
+
+            showText();
+        };
+
+        // Fungsi kembali ke halaman pertama
+        function goBack() {
+            document.getElementById('page2').style.display = 'none';
+            document.getElementById('page1').style.display = 'block';
+            document.getElementById('nickname').value = '';
+            document.getElementById('error').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
